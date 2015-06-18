@@ -7,7 +7,7 @@
 
 Name:           python-barbicanclient
 Version:        3.0.3
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Client Library for OpenStack Barbican Key Management API
 
 License:        ASL 2.0
@@ -94,5 +94,8 @@ dos2unix doc/build/html/_static/jquery.js
 %license LICENSE
 
 %changelog
+* Thu Jun 18 2015 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 3.0.3-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_23_Mass_Rebuild
+
 * Thu Apr 02 2015 Chandan Kumar <chkumar246@gmail.com> - 3.0.3-1
 - Initial package.
