@@ -1,3 +1,4 @@
+%{!?upstream_version: %global upstream_version %{version}%{?milestone}}
 %if 0%{?rhel} && 0%{?rhel} <= 6
 %{!?__python2:        %global __python2 /usr/bin/python2}
 %{!?python2_sitelib:  %global python2_sitelib %(%{__python2} -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")}
@@ -6,13 +7,13 @@
 %{!?_licensedir:%global license %%doc}
 
 Name:           python-barbicanclient
-Version:        XXX
-Release:        XXX
+Version:        4.0.0
+Release:        1%{?dist}
 Summary:        Client Library for OpenStack Barbican Key Management API
 
 License:        ASL 2.0
 URL:            https://pypi.python.org/pypi/python-barbicanclient
-Source0:        https://pypi.python.org/packages/source/p/%{name}/%{name}-%{version}.tar.gz
+Source0:        https://pypi.python.org/packages/source/p/%{name}/%{name}-%{version}%{?milestone}.tar.gz
 
 BuildArch:      noarch
 
@@ -92,3 +93,5 @@ dos2unix doc/build/html/_static/jquery.js
 %license LICENSE
 
 %changelog
+* Wed Mar 23 2016 RDO <rdo-list@redhat.com> 4.0.0-0.1
+-  Rebuild for Mitaka 
