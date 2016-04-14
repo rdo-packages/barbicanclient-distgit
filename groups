@@ -1,5 +1,5 @@
-# UUID          Group Name
-6ddfecad023c6f4fa3ac8c4d2583c502ea675a73 	Non-Interactive Users
-6672e7bbde987bb287180b682bf31208b75715a4       	barbicanclient-distgit-core
-7bdcab8d021c06619c4b6a7ca68cedde47f26786        	barbicanclient-distgit-ptl
-global:Registered-Users		Registered Users
+# UUID                                  	Group Name
+#
+6672e7bbde987bb287180b682bf31208b75715a4	barbicanclient-distgit-core
+7bdcab8d021c06619c4b6a7ca68cedde47f26786	openstack/barbicanclient-distgit-ptl
+global:Registered-Users                 	Registered Users
