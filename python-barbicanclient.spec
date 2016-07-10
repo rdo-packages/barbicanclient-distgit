@@ -1,9 +1,10 @@
-%if 0%{?rhel} && 0%{?rhel} <= 6
-%{!?__python2:        %global __python2 /usr/bin/python2}
-%{!?python2_sitelib:  %global python2_sitelib %(%{__python2} -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")}
-%{!?python2_sitearch: %global python2_sitearch %(%{__python2} -c "from distutils.sysconfig import get_python_lib; print(get_python_lib(1))")}
+%{!?upstream_version: %global upstream_version %{version}%{?milestone}}
+
+%global sname barbicanclient
+
+%if 0%{?fedora}
+%global with_python3 1
 %endif
-%{!?_licensedir:%global license %%doc}
 
 Name:           python-barbicanclient
 Version:        XXX
@@ -11,10 +12,19 @@ Release:        XXX
 Summary:        Client Library for OpenStack Barbican Key Management API
 
 License:        ASL 2.0
-URL:            https://pypi.python.org/pypi/python-barbicanclient
-Source0:        https://pypi.python.org/packages/source/p/%{name}/%{name}-%{version}.tar.gz
+URL:            https://bugs.launchpad.net/python-barbicanclient
+Source0:        http://tarballs.openstack.org/python-barbicanclient/%{name}/%{name}-%{version}.tar.gz
 
 BuildArch:      noarch
+
+%description
+This is a client for the Barbican Key Management API. There is a
+Python library for accessing the API (barbicanclient module), and
+a command-line script (barbican).
+
+%package -n python2-%{sname}
+Summary:        Client Library for OpenStack Barbican Key Management API
+%{?python_provide:%python_provide python2-%{sname}}
 
 BuildRequires:  python2-devel
 BuildRequires:  python-pbr
@@ -28,67 +38,99 @@ Requires:       python-cliff
 Requires:       python-oslo-i18n
 Requires:       python-oslo-serialization
 Requires:       python-oslo-utils
-Requires:       python-iso8601
-Requires:       python-babel
-Requires:       python-oslo-config
-Requires:       python-netaddr
-Requires:       python-prettytable
-Requires:       python-stevedore
-Requires:       pyparsing
-Requires:       python-cmd2
-Requires:       pytz
-Requires:       python-msgpack
 
-%description
+%description -n python2-%{sname}
 This is a client for the Barbican Key Management API. There is a
 Python library for accessing the API (barbicanclient module), and
 a command-line script (barbican).
+
+%if 0%{?with_python3}
+%package -n python3-%{sname}
+Summary:        Client Library for OpenStack Barbican Key Management API
+%{?python_provide:%python_provide python3-%{sname}}
+
+BuildRequires:  python3-devel
+BuildRequires:  python3-pbr
+BuildRequires:  python3-setuptools
+
+Requires:       python3-setuptools
+Requires:       python3-requests
+Requires:       python3-six >= 1.9.0
+Requires:       python3-keystoneclient
+Requires:       python3-cliff
+Requires:       python3-oslo-i18n
+Requires:       python3-oslo-serialization
+Requires:       python3-oslo-utils
+
+%description -n python3-%{sname}
+This is a client for the Barbican Key Management API. There is a
+Python library for accessing the API (barbicanclient module), and
+a command-line script (barbican).
+%endif
 
 %package doc
 Summary: Documentation for OpenStack Barbican API client
 
 BuildRequires:  python-sphinx
 BuildRequires:  python-oslo-sphinx
-BuildRequires:  python-oslo-utils
-BuildRequires:  dos2unix
-BuildRequires:  python-oslo-i18n
-BuildRequires:  python-prettytable
-BuildRequires:  python-keystoneclient
 
 %description doc
 Documentation for the barbicanclient module
 
 %prep
 %setup -q -n %{name}-%{upstream_version}
-# let RPM handle deps
-sed -i '/setup_requires/d; /install_requires/d; /dependency_links/d' setup.py
 
 rm -rf {test-,}requirements.txt
 
 %build
-%{__python2} setup.py build
-# doc
-export PYTHONPATH="$( pwd ):$PYTHONPATH"
-pushd doc
-sphinx-build -b html -d build/doctrees   source build/html
-popd
-# Fix hidden-file-or-dir warnings
-rm -fr doc/build/html/.buildinfo
+%py2_build
+%if 0%{?with_python3}
+%py3_build
+%endif
 
 %install
-%{__python2} setup.py install --skip-build --root %{buildroot}
-dos2unix doc/build/html/_static/jquery.js
+%if 0%{?with_python3}
+%py3_install
+mv %{buildroot}%{_bindir}/barbican %{buildroot}%{_bindir}/barbican-%{python3_version}
+ln -s ./barbican-%{python3_version} %{buildroot}%{_bindir}/barbican-3
+# Delete tests
+rm -fr %{buildroot}%{python3_sitelib}/barbicanclient/tests
+%endif
+
+%py2_install
+mv %{buildroot}%{_bindir}/barbican %{buildroot}%{_bindir}/barbican-%{python2_version}
+ln -s ./barbican-%{python2_version} %{buildroot}%{_bindir}/barbican-2
+
+ln -s ./barbican-2 %{buildroot}%{_bindir}/barbican
+
+# Delete tests
+rm -fr %{buildroot}%{python2_sitelib}/barbicanclient/tests
 
 
-%files
+export PYTHONPATH="$( pwd ):$PYTHONPATH"
+sphinx-build -b html doc/source html
+
+%files -n python2-%{sname}
+%doc README.rst
 %license LICENSE
-%doc AUTHORS CONTRIBUTING.rst README.rst PKG-INFO ChangeLog
+%{python2_sitelib}/%{sname}
+%{python2_sitelib}/*.egg-info
 %{_bindir}/barbican
-%{python2_sitelib}/barbicanclient
-%{python2_sitelib}/python_barbicanclient-%{upstream_version}-py?.?.egg-info
+%{_bindir}/barbican-2
+%{_bindir}/barbican-%{python2_version}
+
+%if 0%{?with_python3}
+%files -n python3-%{sname}
+%license LICENSE
+%doc README.rst
+%{python3_sitelib}/%{sname}
+%{python3_sitelib}/*.egg-info
+%{_bindir}/barbican-3
+%{_bindir}/barbican-%{python3_version}
+%endif
 
 %files doc
-%doc doc/build/html
+%doc html
 %license LICENSE
 
 %changelog
