@@ -7,8 +7,8 @@
 
 
 Name:           python-barbicanclient
-Version:        4.0.0
-Release:        2%{?dist}
+Version:        4.0.1
+Release:        1%{?dist}
 Summary:        Client Library for OpenStack Barbican Key Management API
 
 License:        ASL 2.0
@@ -167,6 +167,9 @@ dos2unix doc/build/html/_static/jquery.js
 %license LICENSE
 
 %changelog
+* Mon Sep 12 2016 Haikel Guemar <hguemar@fedoraproject.org> 4.0.1-1
+- Update to 4.0.1
+
 * Fri Jul  1 2016 Haïkel Guémar <hguemar@fedoraproject.org> - 4.0.0-2
 - Add python3 subpackage
 - Use pypi.io for Source URL
