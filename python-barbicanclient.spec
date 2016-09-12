@@ -12,7 +12,7 @@ Release:        XXX
 Summary:        Client Library for OpenStack Barbican Key Management API
 
 License:        ASL 2.0
-URL:            https://pypi.python.org/pypi/python-barbicanclient
+URL:            https://pypi.io/pypi/python-barbicanclient
 Source0:        https://pypi.io/packages/source/p/%{name}/%{name}-%{version}%{?milestone}.tar.gz
 
 BuildArch:      noarch
