@@ -171,3 +171,4 @@ dos2unix doc/build/html/_static/jquery.js
 %license LICENSE
 
 %changelog
+# REMOVEME: error caused by commit http://git.openstack.org/cgit/openstack/python-barbicanclient/commit/?id=af191c692b442469826c77bfb7c2269289c8c776
