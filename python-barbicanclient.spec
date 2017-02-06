@@ -50,7 +50,6 @@ Requires:       python-cmd2
 Requires:       pytz
 Requires:       python-msgpack
 Requires:       python-keystoneauth1 >= 2.18.0
-Requires:       python-pbr >= 1.8
 
 %{?python_provide:%python_provide python2-%{sname}}
 
@@ -87,7 +86,6 @@ Requires:       python3-cmd2
 Requires:       python3-pytz
 Requires:       python3-msgpack
 Requires:       python3-keystoneauth1 >= 2.18.0
-Requires:       python3-pbr >= 1.8
 
 %{?python_provide:%python_provide python3-%{sname}}
 
