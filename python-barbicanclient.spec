@@ -36,9 +36,9 @@ Requires:       python-requests
 Requires:       python-six >= 1.9.0
 Requires:       python-keystoneclient
 Requires:       python-cliff
-Requires:       python-oslo-i18n
-Requires:       python-oslo-serialization
-Requires:       python-oslo-utils
+Requires:       python-oslo-i18n >= 2.1.0
+Requires:       python-oslo-serialization >= 1.10.0
+Requires:       python-oslo-utils >= 3.18.0
 Requires:       python-iso8601
 Requires:       python-babel
 Requires:       python-oslo-config
@@ -49,6 +49,8 @@ Requires:       pyparsing
 Requires:       python-cmd2
 Requires:       pytz
 Requires:       python-msgpack
+Requires:       python-keystoneauth1 >= 2.18.0
+Requires:       python-pbr >= 1.8
 
 %{?python_provide:%python_provide python2-%{sname}}
 
@@ -71,9 +73,9 @@ Requires:       python3-requests
 Requires:       python3-six >= 1.9.0
 Requires:       python3-keystoneclient
 Requires:       python3-cliff
-Requires:       python3-oslo-i18n
-Requires:       python3-oslo-serialization
-Requires:       python3-oslo-utils
+Requires:       python3-oslo-i18n >= 2.1.0
+Requires:       python3-oslo-serialization >= 1.10.0
+Requires:       python3-oslo-utils >= 3.18.0
 Requires:       python3-iso8601
 Requires:       python3-babel
 Requires:       python3-oslo-config
@@ -84,6 +86,8 @@ Requires:       python3-pyparsing
 Requires:       python3-cmd2
 Requires:       python3-pytz
 Requires:       python3-msgpack
+Requires:       python3-keystoneauth1 >= 2.18.0
+Requires:       python3-pbr >= 1.8
 
 %{?python_provide:%python_provide python3-%{sname}}
 
