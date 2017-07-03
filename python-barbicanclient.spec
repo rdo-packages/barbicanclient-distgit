@@ -30,6 +30,7 @@ Summary:        Client Library for OpenStack Barbican Key Management API
 BuildRequires:  python2-devel
 BuildRequires:  python-pbr
 BuildRequires:  python-setuptools
+BuildRequires:  git
 
 Requires:       python-setuptools
 Requires:       python-requests
@@ -102,7 +103,7 @@ a command-line script (barbican).
 Summary: Documentation for OpenStack Barbican API client
 
 BuildRequires:  python-sphinx
-BuildRequires:  python-oslo-sphinx
+BuildRequires:  python-openstackdocstheme
 BuildRequires:  python-oslo-utils
 BuildRequires:  dos2unix
 BuildRequires:  python-oslo-i18n
@@ -113,7 +114,7 @@ BuildRequires:  python-keystoneclient
 Documentation for the barbicanclient module
 
 %prep
-%setup -q -n %{name}-%{upstream_version}
+%autosetup -n %{name}-%{upstream_version} -S git
 # let RPM handle deps
 sed -i '/setup_requires/d; /install_requires/d; /dependency_links/d' setup.py
 
@@ -127,9 +128,7 @@ rm -rf {test-,}requirements.txt
 
 # doc
 export PYTHONPATH="$( pwd ):$PYTHONPATH"
-pushd doc
-sphinx-build -b html -d build/doctrees   source build/html
-popd
+%{__python2} setup.py build_sphinx -b html
 # Fix hidden-file-or-dir warnings
 rm -fr doc/build/html/.buildinfo
 
