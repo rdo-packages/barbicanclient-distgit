@@ -126,7 +126,6 @@ rm -rf {test-,}requirements.txt
 %endif
 
 # doc
-export PYTHONPATH="$( pwd ):$PYTHONPATH"
 pushd doc
 sphinx-build -b html -d build/doctrees   source build/html
 popd
