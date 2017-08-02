@@ -104,7 +104,6 @@ rm -rf {test-,}requirements.txt
 %endif
 
 # doc
-export PYTHONPATH="$( pwd ):$PYTHONPATH"
 %{__python2} setup.py build_sphinx -b html
 # Fix hidden-file-or-dir warnings
 rm -fr doc/build/html/.buildinfo
