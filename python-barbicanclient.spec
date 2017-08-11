@@ -7,8 +7,8 @@
 
 
 Name:           python-barbicanclient
-Version:        XXX
-Release:        XXX
+Version:        4.5.2
+Release:        1%{?dist}
 Summary:        Client Library for OpenStack Barbican Key Management API
 
 License:        ASL 2.0
@@ -147,3 +147,6 @@ dos2unix doc/build/html/_static/jquery.js
 %license LICENSE
 
 %changelog
+* Fri Aug 11 2017 Alfredo Moralejo <amoralej@redhat.com> 4.5.2-1
+- Update to 4.5.2
+
