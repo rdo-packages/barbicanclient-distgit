@@ -86,6 +86,7 @@ BuildRequires:  python-oslo-utils
 BuildRequires:  dos2unix
 BuildRequires:  python-oslo-i18n
 BuildRequires:  python-prettytable
+BuildRequires:  openstack-macros
 
 %description doc
 Documentation for the barbicanclient module
@@ -95,7 +96,7 @@ Documentation for the barbicanclient module
 # let RPM handle deps
 sed -i '/setup_requires/d; /install_requires/d; /dependency_links/d' setup.py
 
-rm -rf {test-,}requirements.txt
+%py_req_cleanup
 
 %build
 %py2_build
