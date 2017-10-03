@@ -5,6 +5,10 @@
 %global with_python3 1
 %endif
 
+%global common_desc \
+This is a client for the Barbican Key Management API. There is a \
+Python library for accessing the API (barbicanclient module), and \
+a command-line script (barbican).
 
 Name:           python-barbicanclient
 Version:        XXX
@@ -19,9 +23,7 @@ BuildArch:      noarch
 
 
 %description
-This is a client for the Barbican Key Management API. There is a
-Python library for accessing the API (barbicanclient module), and
-a command-line script (barbican).
+%{common_desc}
 
 
 %package -n python2-%{sname}
@@ -45,9 +47,7 @@ Requires:       python-pbr >= 2.0.0
 %{?python_provide:%python_provide python2-%{sname}}
 
 %description -n python2-%{sname}
-This is a client for the Barbican Key Management API. There is a
-Python library for accessing the API (barbicanclient module), and
-a command-line script (barbican).
+%{common_desc}
 
 
 %if 0%{?with_python3}
@@ -71,9 +71,7 @@ Requires:       python3-pbr >= 2.0.0
 %{?python_provide:%python_provide python3-%{sname}}
 
 %description -n python3-%{sname}
-This is a client for the Barbican Key Management API. There is a
-Python library for accessing the API (barbicanclient module), and
-a command-line script (barbican).
+%{common_desc}
 %endif
 
 
