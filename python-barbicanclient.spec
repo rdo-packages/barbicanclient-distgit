@@ -85,7 +85,6 @@ Summary: Documentation for OpenStack Barbican API client
 BuildRequires:  python2-sphinx
 BuildRequires:  python2-openstackdocstheme
 BuildRequires:  python2-oslo-utils
-BuildRequires:  dos2unix
 BuildRequires:  python2-oslo-i18n
 BuildRequires:  python2-prettytable
 
@@ -120,10 +119,7 @@ ln -s ./barbican-%{python3_version} %{buildroot}%{_bindir}/barbican-3
 %py2_install
 mv %{buildroot}%{_bindir}/barbican %{buildroot}%{_bindir}/barbican-%{python2_version}
 ln -s ./barbican-%{python2_version} %{buildroot}%{_bindir}/barbican-2
-
 ln -s ./barbican-2 %{buildroot}%{_bindir}/barbican
-
-dos2unix doc/build/html/_static/jquery.js
 
 
 %files -n python2-%{sname}
