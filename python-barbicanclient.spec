@@ -7,7 +7,7 @@
 
 
 Name:           python-barbicanclient
-Version:        4.5.2
+Version:        4.5.3
 Release:        1%{?dist}
 Summary:        Client Library for OpenStack Barbican Key Management API
 
@@ -147,6 +147,9 @@ dos2unix doc/build/html/_static/jquery.js
 %license LICENSE
 
 %changelog
+* Thu Jun 21 2018 RDO <dev@lists.rdoproject.org> 4.5.3-1
+- Update to 4.5.3
+
 * Fri Aug 11 2017 Alfredo Moralejo <amoralej@redhat.com> 4.5.2-1
 - Update to 4.5.2
 
