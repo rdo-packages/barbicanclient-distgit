@@ -40,7 +40,7 @@ Requires:       python2-oslo-i18n >= 3.15.3
 Requires:       python2-oslo-serialization >= 2.18.0
 Requires:       python2-oslo-utils >= 3.33.0
 Requires:       python2-prettytable
-Requires:       python2-keystoneauth1 >= 3.3.0
+Requires:       python2-keystoneauth1 >= 3.4.0
 Requires:       python2-pbr >= 2.0.0
 %if 0%{?fedora} > 0
 Requires:       python2-cliff
@@ -69,7 +69,7 @@ Requires:       python3-oslo-i18n >= 3.15.3
 Requires:       python3-oslo-serialization >= 2.18.0
 Requires:       python3-oslo-utils >= 3.33.0
 Requires:       python3-prettytable
-Requires:       python3-keystoneauth1 >= 3.3.0
+Requires:       python3-keystoneauth1 >= 3.4.0
 Requires:       python3-pbr >= 2.0.0
 
 %{?python_provide:%python_provide python3-%{sname}}
