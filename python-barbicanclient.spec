@@ -1,9 +1,17 @@
+# Macros for py2/py3 compatibility
+%if 0%{?fedora} || 0%{?rhel} > 7
+%global pyver %{python3_pkgversion}
+%else
+%global pyver 2
+%endif
+%global pyver_bin python%{pyver}
+%global pyver_sitelib %python%{pyver}_sitelib
+%global pyver_install %py%{pyver}_install
+%global pyver_build %py%{pyver}_build
+# End of macros for py2/py3 compatibility
 %{!?upstream_version: %global upstream_version %{version}%{?milestone}}
 
 %global sname barbicanclient
-%if 0%{?fedora}
-%global with_python3 1
-%endif
 
 %global common_desc \
 This is a client for the Barbican Key Management API. There is a \
@@ -26,67 +34,36 @@ BuildArch:      noarch
 %{common_desc}
 
 
-%package -n python2-%{sname}
+%package -n python%{pyver}-%{sname}
 Summary:        Client Library for OpenStack Barbican Key Management API
+%{?python_provide:%python_provide python%{pyver}-%{sname}}
 
-BuildRequires:  python2-devel
-BuildRequires:  python2-pbr
-BuildRequires:  python2-setuptools
+BuildRequires:  python%{pyver}-devel
+BuildRequires:  python%{pyver}-pbr
+BuildRequires:  python%{pyver}-setuptools
 BuildRequires:  git
 
-Requires:       python2-requests
-Requires:       python2-six >= 1.10.0
-Requires:       python2-oslo-i18n >= 3.15.3
-Requires:       python2-oslo-serialization >= 2.18.0
-Requires:       python2-oslo-utils >= 3.33.0
-Requires:       python2-prettytable
-Requires:       python2-keystoneauth1 >= 3.4.0
-Requires:       python2-pbr >= 2.0.0
-%if 0%{?fedora} > 0
-Requires:       python2-cliff
-%else
-Requires:       python-cliff
-%endif
+Requires:       python%{pyver}-requests
+Requires:       python%{pyver}-six >= 1.10.0
+Requires:       python%{pyver}-oslo-i18n >= 3.15.3
+Requires:       python%{pyver}-oslo-serialization >= 2.18.0
+Requires:       python%{pyver}-oslo-utils >= 3.33.0
+Requires:       python%{pyver}-prettytable
+Requires:       python%{pyver}-keystoneauth1 >= 3.4.0
+Requires:       python%{pyver}-pbr >= 2.0.0
+Requires:       python%{pyver}-cliff
 
-%{?python_provide:%python_provide python2-%{sname}}
-
-%description -n python2-%{sname}
+%description -n python%{pyver}-%{sname}
 %{common_desc}
-
-
-%if 0%{?with_python3}
-%package -n python3-%{sname}
-Summary:        Client Library for OpenStack Barbican Key Management API
-
-BuildRequires:  python3-devel
-BuildRequires:  python3-pbr
-BuildRequires:  python3-setuptools
-
-Requires:       python3-requests
-Requires:       python3-six >= 1.10.0
-Requires:       python3-cliff
-Requires:       python3-oslo-i18n >= 3.15.3
-Requires:       python3-oslo-serialization >= 2.18.0
-Requires:       python3-oslo-utils >= 3.33.0
-Requires:       python3-prettytable
-Requires:       python3-keystoneauth1 >= 3.4.0
-Requires:       python3-pbr >= 2.0.0
-
-%{?python_provide:%python_provide python3-%{sname}}
-
-%description -n python3-%{sname}
-%{common_desc}
-%endif
-
 
 %package doc
 Summary: Documentation for OpenStack Barbican API client
 
-BuildRequires:  python2-sphinx
-BuildRequires:  python2-openstackdocstheme
-BuildRequires:  python2-oslo-utils
-BuildRequires:  python2-oslo-i18n
-BuildRequires:  python2-prettytable
+BuildRequires:  python%{pyver}-sphinx
+BuildRequires:  python%{pyver}-openstackdocstheme
+BuildRequires:  python%{pyver}-oslo-utils
+BuildRequires:  python%{pyver}-oslo-i18n
+BuildRequires:  python%{pyver}-prettytable
 
 %description doc
 Documentation for the barbicanclient module
@@ -99,45 +76,25 @@ sed -i '/setup_requires/d; /install_requires/d; /dependency_links/d' setup.py
 rm -rf {test-,}requirements.txt
 
 %build
-%py2_build
-%if 0%{?with_python3}
-%py3_build
-%endif
+%{pyver_build}
 
 # doc
-%{__python2} setup.py build_sphinx -b html
+%{pyver_bin} setup.py build_sphinx -b html
 # Fix hidden-file-or-dir warnings
 rm -fr doc/build/html/.buildinfo
 
 %install
-%if 0%{?with_python3}
-%py3_install
-mv %{buildroot}%{_bindir}/barbican %{buildroot}%{_bindir}/barbican-%{python3_version}
-ln -s ./barbican-%{python3_version} %{buildroot}%{_bindir}/barbican-3
-%endif
-
-%py2_install
-mv %{buildroot}%{_bindir}/barbican %{buildroot}%{_bindir}/barbican-%{python2_version}
-ln -s ./barbican-%{python2_version} %{buildroot}%{_bindir}/barbican-2
-ln -s ./barbican-2 %{buildroot}%{_bindir}/barbican
+%{pyver_install}
+ln -s barbican %{buildroot}%{_bindir}/barbican-%{pyver}
 
 
-%files -n python2-%{sname}
+%files -n python%{pyver}-%{sname}
 %license LICENSE
 %doc AUTHORS CONTRIBUTING.rst README.rst PKG-INFO ChangeLog
 %{_bindir}/barbican
-%{_bindir}/barbican-2*
-%{python2_sitelib}/barbicanclient
-%{python2_sitelib}/python_barbicanclient-%{upstream_version}-py?.?.egg-info
-
-%if 0%{?with_python3}
-%files -n python3-%{sname}
-%license LICENSE
-%doc AUTHORS CONTRIBUTING.rst README.rst PKG-INFO ChangeLog
-%{_bindir}/barbican-3*
-%{python3_sitelib}/barbicanclient
-%{python3_sitelib}/python_barbicanclient-%{upstream_version}-py?.?.egg-info
-%endif
+%{_bindir}/barbican-%{pyver}
+%{pyver_sitelib}/barbicanclient
+%{pyver_sitelib}/python_barbicanclient-%{upstream_version}-py?.?.egg-info
 
 %files doc
 %doc doc/build/html
