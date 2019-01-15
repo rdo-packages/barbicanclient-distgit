@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ad0253b_284da672",
+        "filename": "python-barbicanclient.spec",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 403
+      },
+      "writtenOn": "2019-01-15T14:12:23Z",
+      "side": 1,
+      "message": "these not required now.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 41
+      },
+      "revId": "37914208c69635781bc0a6c89940f45fe8375360",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": false
+    }
+  ]
+}
