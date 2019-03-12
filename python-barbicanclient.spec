@@ -25,8 +25,8 @@ Python library for accessing the API (barbicanclient module), and \
 a command-line script (barbican).
 
 Name:           python-barbicanclient
-Version:        XXX
-Release:        XXX
+Version:        4.8.1
+Release:        1%{?dist}
 Summary:        Client Library for OpenStack Barbican Key Management API
 
 License:        ASL 2.0
@@ -157,3 +157,6 @@ ln -s ./barbican-2 %{buildroot}%{_bindir}/barbican
 %endif
 
 %changelog
+* Tue Mar 12 2019 RDO <dev@lists.rdoproject.org> 4.8.1-1
+- Update to 4.8.1
+
