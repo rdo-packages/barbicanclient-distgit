@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "527681bd_7666e124",
+        "filename": "python-barbicanclient.spec",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 128
+      },
+      "writtenOn": "2019-10-01T10:34:12Z",
+      "side": 1,
+      "message": "doc subpackages are not actual python code that is python version specific, so    it should stay as python-XX-doc",
+      "revId": "4b2540e0156d5b79d9e6f8f70a3449272047cc15",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": false
+    }
+  ]
+}
