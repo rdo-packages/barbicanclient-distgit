@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2c577154_26d198f6",
+        "filename": "python-barbicanclient.spec",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 128
+      },
+      "writtenOn": "2019-10-01T09:57:32Z",
+      "side": 1,
+      "message": "I think we should keep a major-version binary:\n\nln -s ./barbican %{buildroot}%{_bindir}/barbican-%{pyver}",
+      "revId": "a90576cb33240ab0a7184535bf014c71b1a0effc",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d92de0bc_ad74d43f",
+        "filename": "python-barbicanclient.spec",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 128
+      },
+      "writtenOn": "2019-10-01T09:57:32Z",
+      "side": 1,
+      "message": "missing versioned binary.",
+      "revId": "a90576cb33240ab0a7184535bf014c71b1a0effc",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": false
+    }
+  ]
+}
