@@ -108,3 +108,4 @@ ln -s ./barbican %{buildroot}%{_bindir}/barbican-%{pyver}
 %endif
 
 %changelog
+# REMOVEME: error caused by commit http://git.openstack.org/cgit/openstack/python-barbicanclient/commit/?id=e5fdd10f04488d6f6e252a63c57bf2be92a06c8f
