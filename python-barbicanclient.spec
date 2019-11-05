@@ -63,6 +63,7 @@ Requires:       python%{pyver}-cliff
 Summary: Documentation for OpenStack Barbican API client
 
 BuildRequires:  python%{pyver}-sphinx
+BuildRequires:  python%{pyver}-sphinxcontrib-rsvgconverter
 BuildRequires:  python%{pyver}-openstackdocstheme
 BuildRequires:  python%{pyver}-oslo-utils
 BuildRequires:  python%{pyver}-oslo-i18n
