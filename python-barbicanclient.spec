@@ -38,9 +38,7 @@ BuildRequires:  git
 %package -n python%{pyver}-%{sname}
 Summary:        Client Library for OpenStack Barbican Key Management API
 %{?python_provide:%python_provide python%{pyver}-%{sname}}
-%if %{pyver} == 3
 Obsoletes: python2-%{sname} < %{version}-%{release}
-%endif
 
 BuildRequires:  python%{pyver}-devel
 BuildRequires:  python%{pyver}-pbr
