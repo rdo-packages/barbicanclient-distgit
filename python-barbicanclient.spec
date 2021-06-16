@@ -104,7 +104,7 @@ ln -s ./barbican %{buildroot}%{_bindir}/barbican-3
 %{_bindir}/barbican
 %{_bindir}/barbican-3
 %{python3_sitelib}/barbicanclient
-%{python3_sitelib}/python_barbicanclient-%{upstream_version}-py?.?.egg-info
+%{python3_sitelib}/python_barbicanclient-%{upstream_version}-py%{python3_version}.egg-info
 
 %if 0%{?with_doc}
 %files -n python-%{sname}-doc
