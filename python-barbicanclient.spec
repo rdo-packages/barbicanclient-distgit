@@ -46,7 +46,6 @@ BuildRequires:  python3-devel
 BuildRequires:  python3-pbr
 BuildRequires:  python3-setuptools
 Requires:       python3-requests >= 2.14.2
-Requires:       python3-six >= 1.10.0
 Requires:       python3-oslo-i18n >= 3.15.3
 Requires:       python3-oslo-serialization >= 2.18.0
 Requires:       python3-oslo-utils >= 3.33.0
