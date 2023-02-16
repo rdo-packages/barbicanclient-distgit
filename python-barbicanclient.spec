@@ -50,7 +50,7 @@ Requires:       python3-oslo-i18n >= 3.15.3
 Requires:       python3-oslo-serialization >= 2.18.0
 Requires:       python3-oslo-utils >= 3.33.0
 Requires:       python3-prettytable
-Requires:       python3-keystoneauth1 >= 3.4.0
+Requires:       python3-keystoneauth1 >= 5.1.1
 Requires:       python3-pbr >= 2.0.0
 Requires:       python3-cliff >= 2.8.0
 
