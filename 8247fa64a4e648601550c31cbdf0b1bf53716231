@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32d5e9cc_03d94c01",
+        "filename": "python-barbicanclient.spec",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 635
+      },
+      "writtenOn": "2023-07-21T11:55:35Z",
+      "side": 1,
+      "message": "we can remove this line",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 51
+      },
+      "revId": "8247fa64a4e648601550c31cbdf0b1bf53716231",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7"
+    }
+  ]
+}
