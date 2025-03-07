@@ -8,7 +8,12 @@
 %global excluded_brs %{excluded_brs} sphinx openstackdocstheme
 %endif
 
+%if 0%{?repo_bootstrap}
+%global excluded_brs %{excluded_brs} python-openstackclient
+%endif
+
 %global with_doc 1
+%global repo_bootstrap 0
 
 %global sname barbicanclient
 
